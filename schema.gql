@@ -1,0 +1,73 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Productstpye {
+  _id: String!
+  title: String!
+  descraption: String!
+  price: String!
+  color: [String!]!
+  image_one: String!
+  image_tow: String!
+  image_three: String!
+}
+
+type Usertpye {
+  _id: String!
+  name: String!
+  email: String!
+  password: String!
+}
+
+type SignInResponse {
+  accessToken: String!
+}
+
+type Cardtype {
+  _id: String!
+  list: [Productstpye!]!
+}
+
+type Query {
+  Sayhi: String!
+  Producte: [Productstpye!]!
+  Userfind(id: FindUserByIdInput!): Usertpye!
+  Getcard: Cardtype!
+}
+
+input FindUserByIdInput {
+  id: String!
+}
+
+type Mutation {
+  AddProdcute(prod: PorductInput!, image_one: Upload!, image_two: Upload!, image_three: Upload!): Productstpye!
+  AddUser(User: UserInput!): Usertpye!
+  signIn(login: Logininput!): SignInResponse!
+  addtocard(id: CardInput!): Cardtype!
+  Deletocard(id: CardInput!): Cardtype!
+}
+
+input PorductInput {
+  title: String!
+  decription: String!
+  price: String!
+}
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
+
+input UserInput {
+  name: String!
+  email: String!
+  password: String!
+}
+
+input Logininput {
+  email: String!
+  password: String!
+}
+
+input CardInput {
+  id: String!
+}
